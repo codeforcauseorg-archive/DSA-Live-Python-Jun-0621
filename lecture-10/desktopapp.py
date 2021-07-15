@@ -1,12 +1,18 @@
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.gridlayout import GridLayout
+from kivy.clock import Clock
+
+
+def tick(event):
+    print("Tick")
+
 
 def hitAction(event):
     print("I am getting hit")
 
-class AnotherLayout(GridLayout):
 
+class AnotherLayout(GridLayout):
 
     def __init__(self):
         super(AnotherLayout, self).__init__()
@@ -14,6 +20,7 @@ class AnotherLayout(GridLayout):
         self.add_widget(Button(text="inner 1"))
         self.add_widget(Button(text="inner 2"))
         self.add_widget(Button(text="inner 3"))
+        Clock.schedule_interval(tick, 1)
 
 
 class BaseLayout(GridLayout):
