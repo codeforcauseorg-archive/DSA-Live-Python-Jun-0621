@@ -1,4 +1,4 @@
-nums = [10, 20, 5, 3, 14, 62]
+nums = [0]
 
 
 def quick_sort(data, start, end):
