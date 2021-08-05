@@ -1,4 +1,5 @@
 class Human:
+
     def __init__(self):
         self.hands = 2
         self.money = 1000
