@@ -39,6 +39,37 @@ class AdjListGraph:
                     visited.add(padosi)
                     stack.append(padosi)
 
+    def connected_components(self):
+
+        components = []
+
+        stack = []
+        visited = set()
+
+        for vertex in self.vertices.values():
+
+            if vertex in visited:
+                continue
+
+            component = []
+            stack.append(vertex)
+            visited.add(vertex)
+
+            while len(stack) > 0:
+
+                top = stack.pop()
+                component.append(top.value)
+
+                for padosi in top.neighbours:
+                    if padosi not in visited:
+                        visited.add(padosi)
+                        stack.append(padosi)
+
+            components.append(component)
+
+        return components
+
+
     def DFS(self, source, target):
 
         stack = []
@@ -62,6 +93,8 @@ class AdjListGraph:
                     stack.append(padosi)
 
         return False
+
+
 
     def BFT(self, source):
 
@@ -101,12 +134,13 @@ graph.add_vertex("A")
 graph.add_vertex("B")
 graph.add_vertex("C")
 graph.add_vertex("D")
+graph.add_vertex("E")
+graph.add_vertex("F")
 
 graph.add_edge("A", "B")
-graph.add_edge("B", "D")
-graph.add_edge("A", "C")
-graph.add_edge("A", "D")
+graph.add_edge("B", "C")
+graph.add_edge("D", "E")
+graph.add_edge("E", "F")
 
-
-graph.represent()
+print(graph.connected_components())
 
